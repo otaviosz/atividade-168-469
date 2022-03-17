@@ -1,8 +1,20 @@
-from flask import Flask, render_templates
+from flask import Flask, render_template
 app = Flask('app')
 
 @app.route('/')
 def index():
-  return render_templates('index.html')
+  return render_template('index.html')
+
+@app.route('/about')
+def about():
+  return render_template('about.html')
+
+@app.route('/pokemon/<name>')
+def pokemon(name):
+  return render_template(
+    'pokemon.html',
+    name=name
+  )
+  
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+  app.run(host='0.0.0.0', port=8080)
